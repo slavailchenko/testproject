@@ -1,0 +1,95 @@
+
+body {
+	font-family: 'PT Sans Regular';
+	font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.car-service {
+	margin: 0 auto;
+}
+
+.title {
+    background: #f20c0c;
+    height: 2.5rem;
+    margin-left: 7rem;
+    margin-right: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 2.3rem;
+    opacity: 0.8;
+}
+
+.car-classes {
+
+    display: flex;
+    margin-left: 15rem;
+    margin-right: 7rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    /* color: white; */
+}
+
+/*.car-classes div {
+
+	height: 10rem;
+    
+}*/
+
+.title-classes-cars {
+    background: black;
+    color: white;
+    font-size: 0.9rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 5px 0 5px 0;
+    text-transform: uppercase;
+}
+
+.btn_class_cars {
+    padding-top: 7rem;
+}
+
+.btn_class_cars a {
+    background: #f43c3c;
+    padding: 7px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn_class_cars a:hover {
+	opacity: 0.7;
+	transition: all 0.5s ease;
+}
+
+/*Down pointing*/
+
+.triangle-down {
+    width: 10%;
+    height: 0;
+    padding-left:10%;
+    padding-top: 10%;
+    overflow: hidden;
+    margin-left: 38%;
+    margin-top: 1rem;
+}
+
+.triangle-down:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left:-50px;
+    margin-top:-50px;
+    
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 50px solid #f43c3c;
+}
