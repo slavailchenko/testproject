@@ -79,6 +79,7 @@ a {
     overflow: hidden;
     margin-left: 38%;
     margin-top: 1rem;
+    visibility: hidden; 
 }
 
 .triangle-down:after {
@@ -92,4 +93,34 @@ a {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-top: 50px solid #f43c3c;
+    
+}
+
+/*Main container with widget*/ 
+
+.main {
+    margin-left: 15rem;
+    margin-right: 7rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.widget {
+    float: right;
+    /*margin-right: 7rem;*/
+}
+
+ul#widget_list {
+    list-style-type: none;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    border-left: 1px solid #0000007d;
+}
+
+ul#widget_list a {
+    margin-top: 10px;
+    margin-left: -10px;
+    line-height: 2rem;
+    text-transform: uppercase;
+    color: #0000007d;
 }
