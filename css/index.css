@@ -1,6 +1,6 @@
 
 body {
-	font-family: 'PT Sans Regular';
+	font-family: 'PT Sans', sans-serif;
 	font-size: 1.6rem;
 }
 
@@ -24,6 +24,7 @@ a {
     font-size: 1.2rem;
     line-height: 2.3rem;
     opacity: 0.8;
+    font-weight: bold;
 }
 
 .car-classes {
@@ -46,10 +47,11 @@ a {
     background: black;
     color: white;
     font-size: 0.9rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
     padding: 5px 0 5px 0;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .btn_class_cars {
@@ -61,7 +63,10 @@ a {
     padding: 7px;
     color: white;
     text-transform: uppercase;
+    font-weight: bold;
     font-size: 0.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .btn_class_cars a:hover {
@@ -119,8 +124,55 @@ ul#widget_list {
 
 ul#widget_list a {
     margin-top: 10px;
-    margin-left: -10px;
+    margin-left: 0;
     line-height: 2rem;
     text-transform: uppercase;
     color: #0000007d;
 }
+
+.image-car img {
+    width: 80%;
+}
+
+.message p {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+ul#widget_list li {
+    width: auto;
+    padding-left: 20px;
+    height: 30px;
+    right: 30px;
+    position: relative;
+    background: red;
+    opacity: 0.5;
+}
+
+ul#widget_list li:after {
+    content: " ";
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    /* background: red; */
+    border-right: 15px solid red;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    /* opacity: 0.6; */
+  }
+
+ul#widget_list li:before {
+    content: "";
+    position: absolute;
+    /* right: -20px; */
+    bottom: 0;
+    width: 0;
+    height: 0;
+    /* border-left: 20px solid red; */
+    /* border-top: 20px solid transparent; */
+    /* border-bottom: 20px solid transparent; */
+  }

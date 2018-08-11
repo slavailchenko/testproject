@@ -61,10 +61,11 @@ for (let i=0; i<obj_complete.length; i++) {
 var navLink = [].slice.call(document.querySelectorAll('.btn_class_cars'));
 var downLink = [].slice.call(document.querySelectorAll('.triangle-down'));
 
+
 navLink.forEach(function(el) {
     el.addEventListener('click', function(e) {
         e.preventDefault();
-       
+       	document.getElementById('message').innerHTML = '';
         navLink.forEach((nl) => {
             if (nl !== this) {
                 nl.classList.remove('active');
@@ -86,8 +87,47 @@ navLink.forEach(function(el) {
     
 });
 
-// Show image car
+// Show image car and price
+	
+	var list_packet = [].slice.call(document.querySelectorAll('.widget-list li'));
+		console.log (list_packet);
 
+		list_packet.forEach(function(el) {
+   		 	el.addEventListener('click', function(e) {
+        	e.preventDefault();
+
+
+        	for (let i=0; i<class_cars.length; i++) {
+			if (document.getElementById('triangle-down_'+i).style.visibility=='visible') {
+				var index = i; 
+				console.log (index);
+				}
+			}
+       			
+       			if (index || (index == 0)) {
+       	
+		        list_packet.forEach((nl) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	}
+        		});
+		
+		       		this.classList.add('active');
+		       		let index_menu = list_packet.indexOf(this);
+		       		
+		       		document.getElementById('image_car').innerHTML='<img src='+obj_complete[index_menu].background[index]+'>';
+		       		var price_total = obj_complete[index_menu].price * class_cars[index].multi;
+		       		console.log (price_total);
+
+       				} else { 
+       					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
+       						}
+
+	    	}, false);
+
+    	});
+
+	
 
 
 
