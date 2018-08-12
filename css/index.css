@@ -159,12 +159,55 @@ ul#widget_list_details a {
     font-size: 0.8rem;
 }
 
+.dropdown {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 60%;
+    margin-top: -6px;
+    border-width: 6px 6px 0px 6px;
+    border-style: solid;
+    border-color: #fff transparent;
+}
+
 .widget-list .active a, #sub_menu .active a {
     color: white !important;
 }
 
 .image-car img {
-    width: 80%;
+    width: 100%;
+    position: relative;
+    top: 10%;
+    right: 10%;
+}
+
+.price {
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #f43c3c;
+    border-bottom: 1px solid black;
+    font-size: 1.3rem;
+}
+
+.price-details {
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: black;
+    font-size: 0.9rem;
+}
+
+.price p, .price-details p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#price {
+    color: #f43c3c;
+    margin-left: 50px;
+    font-size: 1.3rem;
 }
 
 .message p {
@@ -175,13 +218,45 @@ ul#widget_list_details a {
 }
 
 ul#widget_list li {
-    width: auto;
+    width: 136px;
     padding-left: 20px;
     height: 30px;
     right: 30px;
     position: relative;
     background: transparent;
-    
+}
+
+.sub-head-menu {
+    background: black;
+    width: 136px;
+    padding-left: 20px;
+    height: 30px;
+    right: 20px;
+    position: relative;
+    opacity: 0.8;
+}
+
+.sub-head-menu: hover {
+    opacity: 0.6;
+    transition: all 0.5s ease;
+}
+
+.sub-head-menu a {
+    color: white !important;
+    position: absolute;
+    top: -2px;
+}
+
+.sub-head-menu:after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 15px solid black;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
 }
 
 ul#widget_list li:hover {
@@ -196,17 +271,18 @@ ul#widget_list li:after {
     bottom: 0;
     width: 0;
     height: 0;
-    /* background: red; */
     border-right: 15px solid transparent;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    /* opacity: 0.6; */
     color: white;
   }
 
+#sub_menu {
+
+}
 
 #sub_menu li {
-    width: 120px;
+    width: 130px;
     padding-left: 26px;
     height: 30px;
     right: 40px;
@@ -227,11 +303,9 @@ ul#widget_list li:after {
     bottom: 0;
     width: 0;
     height: 0;
-    /* background: red; */
     border-right: 15px solid transparent;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    /* opacity: 0.6; */
     color: white;
   }
          

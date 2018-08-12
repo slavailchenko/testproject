@@ -29,8 +29,21 @@
 
 		<div class='main container' id='main'>
 
-			<div class='image-car' id='image_car'>
-				<img src='./images/mercedes/clean.jpg'>
+			<div class='left-block'>
+				<div class='image-car' id='image_car'>
+					<img src='./images/mercedes/clean.jpg'>
+				</div>
+
+				<div class='footer-img'>
+						<div class='price'>
+							<p>Цена:</p>
+						</div>
+						<div class='price-details'>
+							<p>Материалы + работа<span id='price'></span>
+							</p> 
+							<a class='call-me'>Позвоните мне</a>
+						</div>
+				</div>
 			</div>
 
 			<div class="widget">
@@ -40,7 +53,11 @@
 	  			</ul>
 
 	  			<ul class='widget-list-details' id='widget_list_details'>
-	  				<li><a class='sub-head-menu' href="#widget_list_details"  onclick="openMenu('sub_menu')">Частями</a>
+	  				<li>
+	  					<div class='sub-head-menu'>
+	  						<a href='#sub_menu' class=href="#widget_list_details"  onclick="openMenu('sub_menu')">Частями</a>
+	  						<span class='dropdown' id='dropdown'> </span>
+	  					</div>
 	  					<ul class='sub-widget-list-details' id="sub_menu">
 
 						</ul>

@@ -148,6 +148,16 @@ navLink.forEach(function(el) {
         		});
 					
 
+				list_packet_details.forEach((nl, i) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent;");
+                	let styleEl = nl.appendChild(document.createElement("style"));
+                	styleEl.innerHTML = `ul#widget_list_details li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
+                	}
+        		});
+
 		       		this.classList.add('active');
 		       		let index_menu = list_packet.indexOf(this);
 		       		this.setAttribute("style", "background: red;");
@@ -156,6 +166,7 @@ navLink.forEach(function(el) {
     	       		
 		       		document.getElementById('image_car').innerHTML=`<img src=${obj_complete[index_menu].background[index]}>`;
 		       		var price_total = obj_complete[index_menu].price * class_cars[index].multi;
+		       		document.getElementById ('price').innerHTML='$'+price_total;
 		       		console.log (price_total);
 
        				} else { 
@@ -197,6 +208,16 @@ navLink.forEach(function(el) {
                 	}
         		});
 					
+				list_packet.forEach((nl, i) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent;");
+                	console.log (nl);
+                	let styleEl = nl.appendChild(document.createElement("style"));
+                	styleEl.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
+                	}
+        		});
 
 		       		this.classList.add('active');
 		       		let index_sub_menu = list_packet_details.indexOf(this);
@@ -207,6 +228,7 @@ navLink.forEach(function(el) {
 		       		document.getElementById('image_car').innerHTML=`<img src=${obj_details[index_sub_menu].background[index]}>`;
 		       		var price_total = obj_details[index_sub_menu].price * class_cars[index].multi;
 		       		console.log (price_total);
+		       		document.getElementById('price').innerHTML='$'+price_total;
 
        				} else { 
        					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
@@ -228,8 +250,10 @@ function openMenu(id){
 
 	if (document.getElementById(id).style.display == "none"){
 		document.getElementById(id).style.display = "block";
+		document.getElementById('dropdown').style.borderWidth = "0 6px 8px 6px";
 	} else {
 		document.getElementById(id).style.display = "none";
+		document.getElementById('dropdown').style.borderWidth = "8px 6px 0px 6px";
 	}
 }
 
