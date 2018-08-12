@@ -21,12 +21,33 @@ var obj_complete = [
 ['./images/citroen/standart3plus.jpg', './images/mazda/standart3plus.jpg', './images/mercedes/standart3plus.jpg']},
 {description: 'Целиком', price: 50, background: 
 ['./images/citroen/all.jpg', './images/mazda/all.jpg', './images/mercedes/all.jpg']}
+];
+
+var obj_details = [
+{description: 'Оптика', price: 10, background: 
+['./images/citroen/optic.jpg', './images/mazda/optic.jpg', './images/mercedes/optic.jpg']},
+{description: 'Пороги внутренние', price: 12, background: 
+['./images/citroen/thresholdsinternal.jpg', './images/mazda/thresholdsinternal.jpg', './images/mercedes/thresholdsinternal.jpg']},
+{description: 'Пороги наружные', price: 12, background: 
+['./images/citroen/thresholdsexternal.jpg', './images/mazda/thresholdsexternal.jpg', './images/mercedes/thresholdsexternal.jpg']},
+{description: 'Двери (4шт)', price: 22, background:
+['./images/citroen/door.jpg', './images/mazda/door.jpg', './images/mercedes/door.jpg']},
+{description: 'Задние крылья', price: 19, background: 
+['./images/citroen/backwing.jpg', './images/mazda/backwing.jpg', './images/mercedes/backwing.jpg']},
+{description: 'Капот', price: 15, background: 
+['./images/citroen/hood.jpg', './images/mazda/hood.jpg', './images/mercedes/hood.jpg']},
+{description: 'Передний бампер', price: 12, background: 
+['./images/citroen/frontbumper.jpg', './images/mazda/frontbumper.jpg', './images/mercedes/frontbumper.jpg']},
+{description: 'Задний бампер', price: 12, background: 
+['./images/citroen/rearbumper.jpg', './images/mazda/rearbumper.jpg', './images/mercedes/rearbumper.jpg']}
 ]
 
 var block_class_cars =[],
 	btn_class_cars= [],
 	triangle_down = [],
-	widget_blocks = [];
+	widget_blocks = [],
+	widget_sub_blocks = []
+	;
 
 
 // render classes of cars
@@ -47,14 +68,22 @@ for (let i=0; i<class_cars.length; i++) {
 
 //
 
-for (let i=0; i<obj_complete.length; i++) {
+function render_menu (data, blocks, list) {
 
-	widget_blocks[i] = document.createElement('li');
-	widget_blocks[i].className=`widget_block_${[i]}`;
-	widget_blocks[i].innerHTML = `<a href="">${obj_complete[i].description}</a>`;
-	widget_list.appendChild(widget_blocks[i]);
+	for (let i=0; i<data.length; i++) {
 
+		blocks[i] = document.createElement('li');
+		blocks[i].className=`block_${[i]}`;
+		blocks[i].innerHTML = `<a href="">${data[i].description}</a>`;
+		list.appendChild(blocks[i]);
+
+		}
 }
+
+render_menu (obj_details, widget_sub_blocks, sub_menu);
+
+render_menu (obj_complete, widget_blocks, widget_list);
+
 
 // Click price
 
@@ -110,7 +139,7 @@ navLink.forEach(function(el) {
        			  list_packet.forEach((nl, i) => {
         		    if (nl !== this) {
                 	nl.classList.remove('active');
-                	nl.setAttribute("style", "background: transparent; color: black;");
+                	nl.setAttribute("style", "background: transparent;");
                 	console.log (nl);
                 	let styleElem = nl.appendChild(document.createElement("style"));
                 	styleElem.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
@@ -121,12 +150,62 @@ navLink.forEach(function(el) {
 
 		       		this.classList.add('active');
 		       		let index_menu = list_packet.indexOf(this);
-		       		this.setAttribute("style", "background: red; color: white;");
+		       		this.setAttribute("style", "background: red;");
 		       		styleElem = this.appendChild(document.createElement("style"));
                 	styleElem.innerHTML = `ul#widget_list li:nth-child(${index_menu+1})::after {border-right: 15px solid red;}`;					
     	       		
 		       		document.getElementById('image_car').innerHTML=`<img src=${obj_complete[index_menu].background[index]}>`;
 		       		var price_total = obj_complete[index_menu].price * class_cars[index].multi;
+		       		console.log (price_total);
+
+       				} else { 
+       					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
+       						}
+
+	    	}, false);
+
+    	});
+
+ // ------
+
+	var list_packet_details = [].slice.call(document.querySelectorAll('.sub-widget-list-details li'));
+
+		console.log (list_packet_details);
+
+		list_packet_details.forEach(function(el) {
+   		 	el.addEventListener('click', function(e) {
+        	e.preventDefault();
+        	
+        	for (let i=0; i<class_cars.length; i++) {
+			if (document.getElementById('triangle-down_'+i).style.visibility=='visible') {
+				var index = i; 
+				console.log (index);
+				}
+			}
+       			
+       			if (index || (index == 0)) {
+
+       				       				
+       			  list_packet_details.forEach((nl, i) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent;");
+                	console.log (nl);
+                	let styleElem = nl.appendChild(document.createElement("style"));
+                	styleElem.innerHTML = `ul#widget_list_details li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
+                	}
+        		});
+					
+
+		       		this.classList.add('active');
+		       		let index_sub_menu = list_packet_details.indexOf(this);
+		       		this.setAttribute("style", "background: red;");
+		       		styleElem = this.appendChild(document.createElement("style"));
+                	styleElem.innerHTML = `ul#widget_list_details li:nth-child(${index_sub_menu+1})::after {border-right: 15px solid red;}`;					
+    	       		
+		       		document.getElementById('image_car').innerHTML=`<img src=${obj_details[index_sub_menu].background[index]}>`;
+		       		var price_total = obj_details[index_sub_menu].price * class_cars[index].multi;
 		       		console.log (price_total);
 
        				} else { 
@@ -147,10 +226,10 @@ startList = function allclose() {
 
 function openMenu(id){
 
-	if (document.getElementById(id).style.display == "block"){
-		document.getElementById(id).style.display = "none";
-	} else {
+	if (document.getElementById(id).style.display == "none"){
 		document.getElementById(id).style.display = "block";
+	} else {
+		document.getElementById(id).style.display = "none";
 	}
 }
 

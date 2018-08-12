@@ -115,20 +115,52 @@ a {
     /*margin-right: 7rem;*/
 }
 
-ul#widget_list {
+ul#widget_list,
+ul#widget_list_details {
     list-style-type: none;
     font-size: 1.2rem;
     margin-top: 1rem;
     border-left: 1px solid #0000007d;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
-ul#widget_list a {
+/*.widget-list-details li a {
+    font-size: 0.8rem;
+
+}
+*/
+ul#sub_menu {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul#widget_list_details {
+    padding-left: 30px;
+
+}
+
+ul#widget_list a,
+ul#widget_list_details a {
     margin-top: 10px;
     margin-left: 0;
     line-height: 1rem;
     font-size: 0.8rem;
     text-transform: uppercase;
     color: #0000007d;
+    
+}
+
+#sub_menu a {
+    font-size: 0.7rem !important;
+}
+
+.sub-head-menu {
+    font-size: 0.8rem;
+}
+
+.widget-list .active a, #sub_menu .active a {
+    color: white !important;
 }
 
 .image-car img {
@@ -149,7 +181,7 @@ ul#widget_list li {
     right: 30px;
     position: relative;
     background: transparent;
-    color: black;
+    
 }
 
 ul#widget_list li:hover {
@@ -158,6 +190,37 @@ ul#widget_list li:hover {
 }
 
 ul#widget_list li:after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    /* background: red; */
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    /* opacity: 0.6; */
+    color: white;
+  }
+
+
+#sub_menu li {
+    width: 120px;
+    padding-left: 26px;
+    height: 30px;
+    right: 40px;
+    position: relative;
+    background: transparent;
+    
+}
+
+#sub_menu li:hover {
+    background: red;
+    color: white;
+}
+
+#sub_menu li:after {
     content: " ";
     position: absolute;
     left: -15px;
