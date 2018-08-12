@@ -34,13 +34,13 @@ var block_class_cars =[],
 for (let i=0; i<class_cars.length; i++) {
 
 	block_class_cars[i] = document.createElement('div');
-	block_class_cars[i].className='class_car_'+[i];
+	block_class_cars[i].className=`class_car_'${[i]}`;
 	block_class_cars[i].style.width=(100/class_cars.length)+'%';
-	block_class_cars[i].style.background ='url('+class_cars[i].background+') no-repeat center 3rem';
+	block_class_cars[i].style.background =`url(${class_cars[i].background}) no-repeat center 3rem`;
 	block_class_cars[i].style.backgroundSize = '70%';
-	block_class_cars[i].innerHTML = '<p class="title-classes-cars">'+class_cars[i].title+'</p>'+
-	'<div class="btn_class_cars" id=btn_class_cars_'+i+'><a href="#">Рассчитать стоимость</a></div>'+
-	'<div class="triangle-down" id=triangle-down_'+i+'></div>';
+	block_class_cars[i].innerHTML = `<p class="title-classes-cars">${class_cars[i].title}</p>` +
+	`<div class="btn_class_cars" id=btn_class_cars_${i}><a href="#">Рассчитать стоимость</a></div>`+
+	`<div class="triangle-down" id=triangle-down_${i}></div>`;
 	car_classes.appendChild(block_class_cars[i]);
 
 }
@@ -50,8 +50,8 @@ for (let i=0; i<class_cars.length; i++) {
 for (let i=0; i<obj_complete.length; i++) {
 
 	widget_blocks[i] = document.createElement('li');
-	widget_blocks[i].className='widget_block_'+[i];
-	widget_blocks[i].innerHTML = '<a href="">'+obj_complete[i].description+'</a>';
+	widget_blocks[i].className=`widget_block_${[i]}`;
+	widget_blocks[i].innerHTML = `<a href="">${obj_complete[i].description}</a>`;
 	widget_list.appendChild(widget_blocks[i]);
 
 }
@@ -90,13 +90,13 @@ navLink.forEach(function(el) {
 // Show image car and price
 	
 	var list_packet = [].slice.call(document.querySelectorAll('.widget-list li'));
+
 		console.log (list_packet);
 
 		list_packet.forEach(function(el) {
    		 	el.addEventListener('click', function(e) {
         	e.preventDefault();
-
-
+        	
         	for (let i=0; i<class_cars.length; i++) {
 			if (document.getElementById('triangle-down_'+i).style.visibility=='visible') {
 				var index = i; 
@@ -105,17 +105,27 @@ navLink.forEach(function(el) {
 			}
        			
        			if (index || (index == 0)) {
-       	
-		        list_packet.forEach((nl) => {
+
+       				       				
+       			  list_packet.forEach((nl, i) => {
         		    if (nl !== this) {
                 	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent; color: black;");
+                	console.log (nl);
+                	let styleElem = nl.appendChild(document.createElement("style"));
+                	styleElem.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
                 	}
         		});
-		
+					
+
 		       		this.classList.add('active');
 		       		let index_menu = list_packet.indexOf(this);
-		       		
-		       		document.getElementById('image_car').innerHTML='<img src='+obj_complete[index_menu].background[index]+'>';
+		       		this.setAttribute("style", "background: red; color: white;");
+		       		styleElem = this.appendChild(document.createElement("style"));
+                	styleElem.innerHTML = `ul#widget_list li:nth-child(${index_menu+1})::after {border-right: 15px solid red;}`;					
+    	       		
+		       		document.getElementById('image_car').innerHTML=`<img src=${obj_complete[index_menu].background[index]}>`;
 		       		var price_total = obj_complete[index_menu].price * class_cars[index].multi;
 		       		console.log (price_total);
 
@@ -126,6 +136,25 @@ navLink.forEach(function(el) {
 	    	}, false);
 
     	});
+
+ // Submenu
+
+var id_menu = sub_menu;
+
+startList = function allclose() {
+	document.getElementById(id_menu).style.display = "none";
+}
+
+function openMenu(id){
+
+	if (document.getElementById(id).style.display == "block"){
+		document.getElementById(id).style.display = "none";
+	} else {
+		document.getElementById(id).style.display = "block";
+	}
+}
+
+window.onload=startList;
 
 	
 

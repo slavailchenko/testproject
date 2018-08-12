@@ -47,8 +47,8 @@ a {
     background: black;
     color: white;
     font-size: 0.9rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     padding: 5px 0 5px 0;
     text-transform: uppercase;
     font-weight: bold;
@@ -65,8 +65,8 @@ a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.9rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .btn_class_cars a:hover {
@@ -125,7 +125,8 @@ ul#widget_list {
 ul#widget_list a {
     margin-top: 10px;
     margin-left: 0;
-    line-height: 2rem;
+    line-height: 1rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     color: #0000007d;
 }
@@ -147,8 +148,13 @@ ul#widget_list li {
     height: 30px;
     right: 30px;
     position: relative;
+    background: transparent;
+    color: black;
+}
+
+ul#widget_list li:hover {
     background: red;
-    opacity: 0.5;
+    color: white;
 }
 
 ul#widget_list li:after {
@@ -159,20 +165,10 @@ ul#widget_list li:after {
     width: 0;
     height: 0;
     /* background: red; */
-    border-right: 15px solid red;
+    border-right: 15px solid transparent;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     /* opacity: 0.6; */
+    color: white;
   }
-
-ul#widget_list li:before {
-    content: "";
-    position: absolute;
-    /* right: -20px; */
-    bottom: 0;
-    width: 0;
-    height: 0;
-    /* border-left: 20px solid red; */
-    /* border-top: 20px solid transparent; */
-    /* border-bottom: 20px solid transparent; */
-  }
+         
