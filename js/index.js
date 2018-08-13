@@ -66,7 +66,7 @@ for (let i=0; i<class_cars.length; i++) {
 
 }
 
-//
+// functions
 
 function render_menu (data, blocks, list) {
 
@@ -80,6 +80,58 @@ function render_menu (data, blocks, list) {
 		}
 }
 
+function isClearActive () {
+
+	        list_packet.forEach((nl, i) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent;");
+                	console.log (nl);
+                	let styleElem = nl.appendChild(document.createElement("style"));
+                	styleElem.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
+                	}
+        		});
+					
+
+		list_packet_details.forEach((nl, i) => {
+        		    if (nl !== this) {
+                	nl.classList.remove('active');
+                	nl.setAttribute("style", "background: transparent;");
+                	let styleEl = nl.appendChild(document.createElement("style"));
+                	styleEl.innerHTML = `ul#widget_list_details li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
+                	                	
+                	}
+        		});
+}
+
+function load () {
+		       		
+		document.getElementById('triangle-down_2').style.visibility='visible';
+         			
+		list_packet[3].classList.add('active');
+		list_packet[3].setAttribute("style", "background: red;");
+		styleElem = list_packet[3].appendChild(document.createElement("style"));
+        styleElem.innerHTML = `ul#widget_list li:nth-child(${3+1})::after {border-right: 15px solid red;}`;					
+    	       		
+		document.getElementById('image_car').innerHTML=`<img src="./images/mercedes/standart2plus.jpg">`;
+		document.getElementById ('price').innerHTML='$44';
+		       		
+		}
+
+function openMenu(id){
+
+	if (document.getElementById(id).style.display == "none"){
+		document.getElementById(id).style.display = "block";
+		document.getElementById('dropdown').style.borderWidth = "0 6px 8px 6px";
+	} else {
+		document.getElementById(id).style.display = "none";
+		document.getElementById('dropdown').style.borderWidth = "8px 6px 0px 6px";
+	}
+}
+
+// render menu
+
 render_menu (obj_details, widget_sub_blocks, sub_menu);
 
 render_menu (obj_complete, widget_blocks, widget_list);
@@ -89,7 +141,6 @@ render_menu (obj_complete, widget_blocks, widget_list);
 
 var navLink = [].slice.call(document.querySelectorAll('.btn_class_cars'));
 var downLink = [].slice.call(document.querySelectorAll('.triangle-down'));
-
 
 navLink.forEach(function(el) {
     el.addEventListener('click', function(e) {
@@ -107,10 +158,18 @@ navLink.forEach(function(el) {
                 }
         });
 
+        isClearActive ();
+
        this.classList.add('active');
        let index = navLink.indexOf(this);
        console.log (navLink.indexOf(this));
        document.getElementById('triangle-down_'+index).style.visibility='visible';
+       list_packet[3].classList.add('active');
+	   list_packet[3].setAttribute("style", "background: red;");
+	   styleElem = list_packet[3].appendChild(document.createElement("style"));
+       styleElem.innerHTML = `ul#widget_list li:nth-child(${3+1})::after {border-right: 15px solid red;}`;
+       document.getElementById('image_car').innerHTML=`<img src=${obj_complete[3].background[index]}>`;
+       document.getElementById ('price').innerHTML='$'+obj_complete[3].price * class_cars[index].multi;
 
     }, false);
     
@@ -132,32 +191,12 @@ navLink.forEach(function(el) {
 				console.log (index);
 				}
 			}
-       			
+      			
        			if (index || (index == 0)) {
-
        				       				
-       			  list_packet.forEach((nl, i) => {
-        		    if (nl !== this) {
-                	nl.classList.remove('active');
-                	nl.setAttribute("style", "background: transparent;");
-                	console.log (nl);
-                	let styleElem = nl.appendChild(document.createElement("style"));
-                	styleElem.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
-                	                	
-                	}
-        		});
-					
+					isClearActive ();
 
-				list_packet_details.forEach((nl, i) => {
-        		    if (nl !== this) {
-                	nl.classList.remove('active');
-                	nl.setAttribute("style", "background: transparent;");
-                	let styleEl = nl.appendChild(document.createElement("style"));
-                	styleEl.innerHTML = `ul#widget_list_details li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
-                	                	
-                	}
-        		});
-
+		       		console.log (this);
 		       		this.classList.add('active');
 		       		let index_menu = list_packet.indexOf(this);
 		       		this.setAttribute("style", "background: red;");
@@ -172,7 +211,6 @@ navLink.forEach(function(el) {
        				} else { 
        					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
        						}
-
 	    	}, false);
 
     	});
@@ -196,28 +234,7 @@ navLink.forEach(function(el) {
        			
        			if (index || (index == 0)) {
 
-       				       				
-       			  list_packet_details.forEach((nl, i) => {
-        		    if (nl !== this) {
-                	nl.classList.remove('active');
-                	nl.setAttribute("style", "background: transparent;");
-                	console.log (nl);
-                	let styleElem = nl.appendChild(document.createElement("style"));
-                	styleElem.innerHTML = `ul#widget_list_details li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
-                	                	
-                	}
-        		});
-					
-				list_packet.forEach((nl, i) => {
-        		    if (nl !== this) {
-                	nl.classList.remove('active');
-                	nl.setAttribute("style", "background: transparent;");
-                	console.log (nl);
-                	let styleEl = nl.appendChild(document.createElement("style"));
-                	styleEl.innerHTML = `ul#widget_list li:nth-child(${i+1})::after {border-right: 15px solid transparent;}`;
-                	                	
-                	}
-        		});
+					isClearActive ();
 
 		       		this.classList.add('active');
 		       		let index_sub_menu = list_packet_details.indexOf(this);
@@ -233,7 +250,6 @@ navLink.forEach(function(el) {
        				} else { 
        					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
        						}
-
 	    	}, false);
 
     	});
@@ -246,19 +262,18 @@ startList = function allclose() {
 	document.getElementById(id_menu).style.display = "none";
 }
 
-function openMenu(id){
-
-	if (document.getElementById(id).style.display == "none"){
-		document.getElementById(id).style.display = "block";
-		document.getElementById('dropdown').style.borderWidth = "0 6px 8px 6px";
-	} else {
-		document.getElementById(id).style.display = "none";
-		document.getElementById('dropdown').style.borderWidth = "8px 6px 0px 6px";
-	}
-}
-
 window.onload=startList;
 
+// First load
+
+		document.addEventListener('DOMContentLoaded', load);
+        	
+ 
+
+
+	
+
+    	
 	
 
 
