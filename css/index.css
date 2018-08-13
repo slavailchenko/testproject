@@ -16,7 +16,10 @@ a {
 }
 
 .title {
-    background: #f20c0c;
+    background: #f20c0c no-repeat;
+    background-size: 3.5%;
+    background-image: url(../images/1.png);
+    background-position-x: 260px;
     height: 2.5rem;
     margin-left: 7rem;
     margin-right: 4rem;
@@ -107,7 +110,7 @@ a {
 /*Main container with widget*/ 
 
 .main {
-    margin-left: 15rem;
+    margin-left: 11rem;
     margin-right: 7rem;
     margin-bottom: 2rem;
     display: flex;
@@ -334,4 +337,30 @@ ul#widget_list li:after {
     border-bottom: 15px solid transparent;
     color: white;
   }
+
+ul#icons_img li {
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+  ul#icons_img img {
+    zoom: 0.5;
+    align-items: center;
+    vertical-align: middle;
+}
+
+ul#icons_img p {
+    font-size: 8px;
+    width: 40px;
+    text-align: center;
+    color: #f15546;
+}
+
+#icons_img {
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+
          

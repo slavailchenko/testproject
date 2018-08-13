@@ -1,0 +1,89 @@
+@media only screen and (max-width: 768px) {
+
+.title {
+    height: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0; 
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    background-position-x: 90px;
+}
+
+.car-classes {
+    margin-left: 2rem;
+    margin-right: 0;
+    margin-bottom: 1rem;
+}
+
+.car-classes {
+    margin-left: 0;
+    margin-right: 0; 
+    margin-bottom: 1rem;
+}
+
+.class_car_0,
+.class_car_1,
+.class_car_2 {
+    width: auto; 
+}
+
+.title-classes-cars {
+    font-size: 0.6rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 0 5px 0;
+}
+
+.btn_class_cars {
+    padding-top: 3rem;
+}
+
+.btn_class_cars a {
+    padding: 7px;
+    font-size: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.triangle-down {
+    margin-top: 0.5rem;
+}
+
+
+.main {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0;
+}
+
+.widget {
+    margin-right: 0;
+    zoom: 0.5;
+}
+
+.footer-img {
+    zoom: 0.5;
+}
+
+.call-me {
+    margin-right: 10px;
+    padding: 0px 25px 0px 25px;
+    top: 10px;
+    line-height: 0; 
+}
+
+.call-me a {
+	background: black;
+	padding: 5px;
+	}
+
+ul#widget_list a, ul#widget_list_details a {
+    margin-top: 10px;
+    margin-left: 0;
+    line-height: 0; 
+}
+
+
+}

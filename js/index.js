@@ -40,31 +40,38 @@ var obj_details = [
 ['./images/citroen/frontbumper.jpg', './images/mazda/frontbumper.jpg', './images/mercedes/frontbumper.jpg']},
 {description: 'Задний бампер', price: 12, background: 
 ['./images/citroen/rearbumper.jpg', './images/mazda/rearbumper.jpg', './images/mercedes/rearbumper.jpg']}
-]
+];
+
+var icons = [{title: 'фары', icon: './icons/optic.png'}, 
+	     {title: 'зеркала', icon: './icons/mirrors.png'}, 
+	     {title: 'пороги внутренние', icon: './icons/thresholdsinternal.png'}, 
+	     {title: 'тоцы дверей', icon: './icons/door.png'},
+	     {title: 'противотуманки', icon: './icons/foglights.png'},
+	     {title: 'передний бампер', icon: './icons/frontbumper.png'},
+	     {title: 'полка заднего бампера', icon: './icons/rearbumper.png'},
+	     {title: 'ручки', icon: './icons/handles.png'},
+	     {title: 'часть капота', icon: './icons/parthood.png'},
+	     {title: 'капот полностью', icon: './icons/hood.png'},
+	     {title: 'часть крыльев', icon: './icons/partwings.png'},
+	     {title: 'крылья полностью', icon: './icons/wings.png'}
+];
+
+var obj_icons = [
+{title: 'Минимальный', icons: [icons[0], icons[1], icons[2], icons[3], icons[7]]},
+{title: 'Стандарт', icons: [icons[0], icons[1], icons[4], icons[5], icons[7], icons[8], icons[10]]},
+{title: 'Стандарт+',icons: [icons[0], icons[1], icons[4], icons[5], icons[7], icons[9], icons[10]]},
+{title: 'Стандарт++', icons: [icons[0], icons[1], icons[4], icons[5], icons[7], icons[9], icons[11]]},
+{title: 'Стандарт+++', icons: [icons[0], icons[1], icons[4], icons[5], icons[6], icons[7], icons[9], icons[11]]}
+];
 
 var block_class_cars =[],
 	btn_class_cars= [],
 	triangle_down = [],
 	widget_blocks = [],
-	widget_sub_blocks = []
+	widget_sub_blocks = [],
+	icon_blocks = []
 	;
 
-
-// render classes of cars
-
-for (let i=0; i<class_cars.length; i++) {
-
-	block_class_cars[i] = document.createElement('div');
-	block_class_cars[i].className=`class_car_'${[i]}`;
-	block_class_cars[i].style.width=(100/class_cars.length)+'%';
-	block_class_cars[i].style.background =`url(${class_cars[i].background}) no-repeat center 3rem`;
-	block_class_cars[i].style.backgroundSize = '70%';
-	block_class_cars[i].innerHTML = `<p class="title-classes-cars">${class_cars[i].title}</p>` +
-	`<div class="btn_class_cars" id=btn_class_cars_${i}><a href="#">Рассчитать стоимость</a></div>`+
-	`<div class="triangle-down" id=triangle-down_${i}></div>`;
-	car_classes.appendChild(block_class_cars[i]);
-
-}
 
 // functions
 
@@ -75,6 +82,18 @@ function render_menu (data, blocks, list) {
 		blocks[i] = document.createElement('li');
 		blocks[i].className=`block_${[i]}`;
 		blocks[i].innerHTML = `<a href="">${data[i].description}</a>`;
+		list.appendChild(blocks[i]);
+
+		}
+}
+
+function render_icons (data, blocks, list) {
+
+	for (let i=0; i<data.length; i++) {
+
+		blocks[i] = document.createElement('li');
+		blocks[i].className=`block_${[i]}`;
+		blocks[i].innerHTML = `<img src=${data[i].icon}><p>${data[i].title}</p>`;
 		list.appendChild(blocks[i]);
 
 		}
@@ -130,11 +149,29 @@ function openMenu(id){
 	}
 }
 
+// render classes of cars
+
+for (let i=0; i<class_cars.length; i++) {
+
+	block_class_cars[i] = document.createElement('div');
+	block_class_cars[i].className=`class_car_'${[i]}`;
+	block_class_cars[i].style.width=(100/class_cars.length)+'%';
+	block_class_cars[i].style.background =`url(${class_cars[i].background}) no-repeat center 3rem`;
+	block_class_cars[i].style.backgroundSize = '70%';
+	block_class_cars[i].innerHTML = `<p class="title-classes-cars">${class_cars[i].title}</p>` +
+	`<div class="btn_class_cars" id=btn_class_cars_${i}><a href="#">Рассчитать стоимость</a></div>`+
+	`<div class="triangle-down" id=triangle-down_${i}></div>`;
+	car_classes.appendChild(block_class_cars[i]);
+
+}
+
 // render menu
 
 render_menu (obj_details, widget_sub_blocks, sub_menu);
 
 render_menu (obj_complete, widget_blocks, widget_list);
+
+render_icons (obj_icons[3].icons, icon_blocks, icons_img);
 
 
 // Click price
@@ -145,7 +182,9 @@ var downLink = [].slice.call(document.querySelectorAll('.triangle-down'));
 navLink.forEach(function(el) {
     el.addEventListener('click', function(e) {
         e.preventDefault();
+        document.getElementById('icons_img').innerHTML = ''; 
        	document.getElementById('message').innerHTML = '';
+       
         navLink.forEach((nl) => {
             if (nl !== this) {
                 nl.classList.remove('active');
@@ -170,7 +209,8 @@ navLink.forEach(function(el) {
        styleElem.innerHTML = `ul#widget_list li:nth-child(${3+1})::after {border-right: 15px solid red;}`;
        document.getElementById('image_car').innerHTML=`<img src=${obj_complete[3].background[index]}>`;
        document.getElementById ('price').innerHTML='$'+obj_complete[3].price * class_cars[index].multi;
-
+	   
+	   render_icons (obj_icons[3].icons, icon_blocks, icons_img);
     }, false);
     
 });
@@ -207,6 +247,10 @@ navLink.forEach(function(el) {
 		       		var price_total = obj_complete[index_menu].price * class_cars[index].multi;
 		       		document.getElementById ('price').innerHTML='$'+price_total;
 		       		console.log (price_total);
+
+		       		document.getElementById('icons_img').innerHTML = ''; 
+
+		       		render_icons (obj_icons[index_menu].icons, icon_blocks, icons_img);
 
        				} else { 
        					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
@@ -246,6 +290,8 @@ navLink.forEach(function(el) {
 		       		var price_total = obj_details[index_sub_menu].price * class_cars[index].multi;
 		       		console.log (price_total);
 		       		document.getElementById('price').innerHTML='$'+price_total;
+		       		document.getElementById('icons_img').innerHTML = ''; 
+
 
        				} else { 
        					document.getElementById('message').innerHTML='<p>Введите класс машины </p>';
@@ -266,7 +312,7 @@ window.onload=startList;
 
 // First load
 
-		document.addEventListener('DOMContentLoaded', load);
+document.addEventListener('DOMContentLoaded', load);
         	
  
 
