@@ -1,3 +1,64 @@
+@media only screen and (min-width: 1200px) {
+
+.title {
+    background-size: 2.4%;
+    background-position-x: 470px;
+    margin-left: 11rem;
+    margin-right: 5rem;
+}
+
+.title-classes-cars {
+    margin-left: 7rem;
+    margin-right: 7rem;
+}
+
+.btn_class_cars {
+    padding-top: 9rem;
+}
+
+.btn_class_cars a {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.main {
+    margin-left: 18rem;
+    zoom: 1.2;
+}
+
+.price {
+    font-size: 1.8rem;
+}
+
+.price-details {
+    font-size: 1.2rem;
+}
+
+#price {
+    margin-left: 110px;
+    font-size: 1.6rem;
+}
+
+.call-me a {
+    font-size: 1.3rem;
+}
+
+
+.call-me {
+    padding: 5px 65px 5px 65px;
+}
+
+.widget {
+    zoom: 1.2;
+}
+
+#icons_img {
+    zoom: 1.3;
+    margin-top: 10px;
+}
+
+}
+
 @media only screen and (max-width: 768px) {
 
 .title {
